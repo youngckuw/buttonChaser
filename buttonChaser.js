@@ -26,13 +26,14 @@ function setGameAreaBounds() {
 function detectHit() {
   score += 1;
   document.getElementById("scoreLabel").innerHTML = "Score: " + score;
+  document.getElementById("dot").style.backgroundColor = randomBackgroundColor();
 }
 
 function moveDot() {
   // calculate next x, y coordinates of the dot
   var x = Math.floor(Math.random() * aWidth);
-  var y = Math.floor(Math.random() * aHeight);  
-  // keep dot within the gameArea  
+  var y = Math.floor(Math.random() * aHeight);
+  // keep dot within the gameArea
   if (x < 10) x = 10;
   if (y < 10) y = 10;
   // right and bottom is taken care of from the -74 to aWidth and aHeight
@@ -40,7 +41,7 @@ function moveDot() {
   document.getElementById("dot").style.left = x + "px";
   document.getElementById("dot").style.top = y + "px";
 
-  if (iterations < 10) {
+  if (iterations < 30) {
     timer = setTimeout("moveDot()", 1000);
   } else {
     document.getElementById("scoreLabel").innerHTML += "    GAME OVER!";
@@ -48,4 +49,11 @@ function moveDot() {
     clearTimeout(timer);
   }
   iterations++;
+}
+
+function randomBackgroundColor() {
+  var x = Math.floor(Math.random() * 256);
+  var y = Math.floor(Math.random() * 256);
+  var z = Math.floor(Math.random() * 256);
+  return `rgb(${x}, ${y}, ${z})`;
 }
