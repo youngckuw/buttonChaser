@@ -32,3 +32,8 @@
   width: 64px;
   height: 64px;
 }
+
+html {
+	-webkit-text-size-adjust: none;
+	touch-action: manipulation;
+}
